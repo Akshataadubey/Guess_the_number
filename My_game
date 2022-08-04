@@ -1,0 +1,64 @@
+package Oops;
+import java.util.Random;
+import java.util.Scanner;
+class Game{
+    int number;
+    int inputno;
+    int numofguesses=0;
+    public Game(){
+     Random ran = new Random();
+     number = ran.nextInt( 100);
+
+    }
+    void userinput()
+    {
+        System.out.print("Guess the number: ");
+        Scanner sc = new Scanner(System.in);
+        inputno = sc.nextInt();
+
+
+    }
+    boolean correctnumber()
+    {
+        numofguesses++;
+    if(inputno == number){
+        System.out.println("Yes you guessed it right!");
+        System.out.println("Game ended!!");
+        return true;
+
+    }
+    else if(inputno>number)
+    {
+        System.out.println("high...");
+    }
+    else if(inputno<number)
+    {
+        System.out.println("less...");
+    }
+    return false;
+
+    }
+    public int getnumofguesses()
+    {
+        return numofguesses;
+    }
+    public void setnumofguesses(int guess)
+    {
+        numofguesses = guess;
+    }
+
+}
+
+public class Guess_the_number {
+    public static void main(String[] args) {
+        Game gm = new Game( );
+        boolean b=false;
+        while(!b) {
+            gm.userinput();
+             b = gm.correctnumber();
+            System.out.println(b);
+            System.out.println("You guessed the right number in "+ gm.numofguesses+ " truns.");
+        }
+
+    }
+}
